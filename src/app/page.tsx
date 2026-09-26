@@ -1,15 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { MapPin, Phone, ArrowUpRight, Star, Shield, Activity, Clock } from "lucide-react";
+import { motion } from "framer-motion";
+import { MapPin, Phone, ArrowUpRight, Star, Shield, Activity, Clock, CheckCircle2, ChevronRight } from "lucide-react";
 
-export default function MSDentalTapecutEdition() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
-  const yHeroImage = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
+export default function MSDentalClinicalLight() {
   const services = [
     { 
       title: "Modern Infrastructure", 
@@ -48,152 +42,179 @@ export default function MSDentalTapecutEdition() {
   const scrollingReviews = [...reviews, ...reviews, ...reviews];
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-[#020202] text-white font-sans selection:bg-white selection:text-black overflow-x-hidden">
+    <main className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-blue-600 selection:text-white overflow-x-hidden">
       
-      {/* --- TAPECUT SIGNATURE NAV --- */}
-      <motion.nav 
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-        className="fixed top-0 left-0 w-full px-6 md:px-12 py-6 flex justify-between items-center z-50 mix-blend-difference"
-      >
-        <div className="flex flex-col">
-          <span className="text-lg md:text-xl font-bold tracking-tight uppercase">M.S. Dental World</span>
-          <span className="text-[9px] tracking-[0.3em] text-white/50 uppercase">Clinical Excellence</span>
+      {/* --- CLINICAL TOP INFO BAR --- */}
+      <div className="w-full bg-[#0A192F] text-slate-300 py-2.5 px-6 md:px-12 text-xs font-medium flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div className="flex items-center gap-6">
+          <span className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-blue-400" /> D2/191, Jeevan Park, Janakpuri, New Delhi</span>
+          <span className="hidden md:flex items-center gap-2"><Clock className="w-3.5 h-3.5 text-blue-400" /> Mon - Sat: 10:00 AM - 8:30 PM</span>
         </div>
-        
-        <div className="hidden md:flex items-center gap-12 text-xs font-bold tracking-widest uppercase">
-          <span className="hover:text-white/50 transition-colors cursor-pointer">The Clinic</span>
-          <span className="hover:text-white/50 transition-colors cursor-pointer">Expertise</span>
-        </div>
-
-        <a href="tel:+919811668657" className="group flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full text-xs font-bold tracking-widest uppercase hover:scale-95 transition-transform duration-300">
-          Book Visit <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform" />
+        <a href="tel:+919811668657" className="flex items-center gap-2 text-white font-bold hover:text-blue-300 transition-colors">
+          <Phone className="w-3.5 h-3.5 text-blue-400" /> +91 98116 68657
         </a>
-      </motion.nav>
+      </div>
 
-      {/* --- CINEMATIC FULL-COLOR HERO --- */}
-      <section className="relative w-full h-screen flex flex-col justify-end px-6 md:px-12 pb-12 md:pb-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <motion.div style={{ y: yHeroImage }} className="w-full h-full">
-            <img 
-              src="/clinic-hero.jpg" 
-              alt="Clinic Hero" 
-              className="w-full h-[120%] object-cover object-center opacity-60 brightness-90 saturate-[1.1]"
-              onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2070&auto=format&fit=crop" }}
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/40 to-transparent" />
+      {/* --- CLEAN FLOATING NAV --- */}
+      <nav className="sticky top-0 w-full bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-6 md:px-12 py-4 flex justify-between items-center z-50">
+        <div className="flex flex-col">
+          <span className="text-lg md:text-xl font-extrabold text-[#0A192F] tracking-tight">M.S. Dental World</span>
+          <span className="text-[10px] font-bold text-blue-600 tracking-widest uppercase">Multi-Specialty Clinic</span>
         </div>
 
-        <motion.div style={{ opacity: opacityHero }} className="relative z-10 max-w-7xl w-full mx-auto flex flex-col md:flex-row justify-between items-end gap-10">
-          <div className="flex flex-col">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex gap-1 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
-                {[1,2,3,4,5].map(i => <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />)}
-              </div>
-              <span className="text-xs font-bold tracking-widest uppercase text-white">626+ Five-Star Google Reviews</span>
-            </div>
-            <h1 className="text-[12vw] md:text-[7vw] leading-[0.9] font-bold tracking-tighter uppercase">
-              Precision. <br/>
-              <span className="text-white/30">Mastery.</span>
-            </h1>
+        <div className="hidden md:flex items-center gap-8 text-xs font-bold text-slate-600 uppercase tracking-wider">
+          <span className="hover:text-blue-600 transition-colors cursor-pointer">The Clinic</span>
+          <span className="hover:text-blue-600 transition-colors cursor-pointer">Expertise</span>
+          <span className="hover:text-blue-600 transition-colors cursor-pointer">Reviews</span>
+        </div>
+
+        <a href="tel:+919811668657" className="bg-blue-600 text-white px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase hover:bg-blue-700 shadow-md shadow-blue-600/20 transition-all">
+          Book Visit
+        </a>
+      </nav>
+
+      {/* --- CLEAN BRIGHT HERO SECTION --- */}
+      <section className="relative w-full py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full lg:w-1/2 flex flex-col items-start"
+        >
+          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+            <Star className="w-3.5 h-3.5 fill-blue-600 text-blue-600" />
+            626+ Five-Star Google Reviews
           </div>
 
-          <div className="max-w-sm pb-2">
-            <p className="text-sm md:text-base text-white/60 leading-relaxed font-medium">
-              We engineer smiles that last a lifetime. Advanced implantology and ethical dental care in Janakpuri, led by Dr. Madan Mohan.
-            </p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.1] mb-6">
+            Advanced dental care.<br/>
+            <span className="text-blue-600">Zero anxiety.</span>
+          </h1>
+
+          <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-8 max-w-lg font-medium">
+            Serving Janakpuri for over 20 years with ethical diagnostics, painless procedures, and lasting family smiles led by Dr. Madan Mohan.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a href="tel:+919811668657" className="bg-slate-900 text-white px-8 py-4 rounded-full text-sm font-bold shadow-lg hover:bg-slate-800 transition-all text-center">
+              Schedule Consultation
+            </a>
+            <div className="flex items-center justify-center gap-3 px-4 py-2">
+              <div className="flex -space-x-1.5">
+                {[1,2,3,4,5].map(i => <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+              </div>
+              <span className="text-xs font-bold text-slate-700">Verified Local Trust</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Hero Image Frame */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="w-full lg:w-1/2 relative"
+        >
+          <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/10 border-4 border-white">
+            <img 
+              src="/clinic-hero.jpg" 
+              alt="M.S. Dental World" 
+              className="w-full h-full object-cover"
+              onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2070&auto=format&fit=crop" }}
+            />
+          </div>
+          <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden sm:flex items-center gap-4">
+            <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold">
+              20+
+            </div>
+            <div>
+              <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">Experience</p>
+              <p className="text-sm font-extrabold text-slate-900">Years in Janakpuri</p>
+            </div>
           </div>
         </motion.div>
       </section>
 
-      {/* --- THE TRANSITION (Dark to Clinical White) --- */}
-      <section className="relative w-full bg-white text-black py-32 px-6 md:px-12 rounded-t-[2rem] md:rounded-t-[4rem] -mt-8 z-20">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-24">
-          
-          <div className="w-full md:w-5/12 h-[60vh] relative rounded-3xl overflow-hidden group shadow-2xl">
-            <motion.div 
-              initial={{ height: "100%" }}
-              whileInView={{ height: "0%" }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-              className="absolute top-0 left-0 w-full bg-[#020202] z-10"
-            />
+      {/* --- DOCTOR PROFILE SECTION (Clean White) --- */}
+      <section className="w-full bg-white py-24 px-6 md:px-12 border-y border-slate-200/60">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+          <div className="w-full md:w-5/12 aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-slate-50 relative">
             <img 
               src="/doctor.jpg" 
               alt="Dr. Madan Mohan" 
-              className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover"
               onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2000&auto=format&fit=crop" }}
             />
           </div>
 
-          <div className="w-full md:w-7/12 flex flex-col justify-center">
-            <span className="text-xs font-bold tracking-[0.3em] uppercase text-black/30 mb-8 border-l-2 border-black/30 pl-4">The Architect of Smiles</span>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 leading-[1.1]">
+          <div className="w-full md:w-7/12">
+            <span className="text-xs font-bold tracking-widest text-blue-600 uppercase mb-3 block">Chief Dental Surgeon</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
               Dr. Madan Mohan
             </h2>
-            <p className="text-lg md:text-xl text-black/70 leading-relaxed mb-6 font-medium">
-              For over two decades, M.S. Dental World has operated on a strict code: No hidden fees, no unnecessary procedures, and absolute clinical precision.
+            <p className="text-lg text-slate-600 leading-relaxed mb-6">
+              "We treat patients like family, not numbers on a spreadsheet. Ethical diagnosis and patient comfort come before everything else."
             </p>
-            <p className="text-base text-black/50 leading-relaxed mb-12">
-              Whether you need a complex full-mouth rehabilitation or a simple, painless root canal, our facility is equipped with state-of-the-art diagnostic tools to ensure every treatment is executed flawlessly.
+            <p className="text-slate-500 text-sm leading-relaxed mb-8">
+              With over two decades of practice in West Delhi, Dr. Mohan has built M.S. Dental World on absolute transparency. You will never be recommended a procedure you don't need—just honest, expert dental care.
             </p>
 
-            <div className="grid grid-cols-2 gap-6 pt-8 border-t border-black/10">
-              <div className="flex flex-col gap-2">
-                <Shield className="w-5 h-5 text-black" />
-                <span className="font-bold text-sm tracking-wide">Class-B Sterilization</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex items-center gap-3 text-slate-800 font-semibold text-sm">
+                <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" /> Permanent Implants
               </div>
-              <div className="flex flex-col gap-2">
-                <Activity className="w-5 h-5 text-black" />
-                <span className="font-bold text-sm tracking-wide">Advanced Diagnostics</span>
+              <div className="flex items-center gap-3 text-slate-800 font-semibold text-sm">
+                <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" /> Pain-Free Root Canals
+              </div>
+              <div className="flex items-center gap-3 text-slate-800 font-semibold text-sm">
+                <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" /> Transparent Pricing
+              </div>
+              <div className="flex items-center gap-3 text-slate-800 font-semibold text-sm">
+                <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" /> Strict Sterilization
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- THE FIXED CINEMATIC BENTO GRID --- */}
-      <section className="w-full bg-[#080808] py-32 px-6 md:px-12 text-white">
+      {/* --- BENTO GRID: STANDARD OF CARE (Light Mode Luxury) --- */}
+      <section className="w-full py-28 px-6 md:px-12 bg-[#F1F5F9]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div>
-              <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/40 mb-4 block">Infrastructure & Standards</span>
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">The Standard <br/> Of Care.</h2>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-blue-600 mb-3 block">Clinical Excellence</span>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">The Standard Of Care.</h2>
             </div>
-            <p className="text-white/50 max-w-sm text-sm font-medium">A world-class environment designed around patient comfort, strict hygiene, and clinical excellence.</p>
+            <p className="text-slate-600 max-w-sm text-sm font-medium">A pristine, modern environment designed around patient comfort and absolute clinical safety.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[650px]">
+          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[620px]">
             {services.map((service, index) => (
               <motion.div 
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.01 }}
-                className={`relative bg-[#111] rounded-3xl p-8 md:p-10 flex flex-col justify-between overflow-hidden group cursor-pointer border border-white/10 shadow-2xl ${service.span}`}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className={`relative bg-white rounded-3xl p-8 flex flex-col justify-between overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/80 ${service.span}`}
               >
                 {service.img && (
                   <img 
                     src={service.img} 
                     alt={service.title} 
-                    className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-700" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-15 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700" 
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-
                 <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <ArrowUpRight className="w-5 h-5" />
                   </div>
                 </div>
-                <div className="relative z-10 mt-auto pt-16 text-white">
-                  <h3 className={`font-bold tracking-tight mb-3 ${service.span.includes('col-span-2') ? 'text-3xl md:text-5xl' : 'text-2xl md:text-3xl'}`}>{service.title}</h3>
-                  <p className="text-white/70 text-sm md:text-base font-medium max-w-md">{service.desc}</p>
+                <div className="relative z-10 mt-auto pt-16">
+                  <h3 className={`font-bold text-slate-900 tracking-tight mb-2 ${service.span.includes('col-span-2') ? 'text-2xl md:text-3xl' : 'text-xl'}`}>{service.title}</h3>
+                  <p className="text-slate-600 text-sm font-medium">{service.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -201,48 +222,43 @@ export default function MSDentalTapecutEdition() {
         </div>
       </section>
 
-      {/* --- AUTHORITY FLEX (Reviews) --- */}
-      <section className="w-full bg-[#020202] text-white pt-32 pb-16 overflow-hidden flex flex-col">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
-          
-          <div className="flex flex-col">
-            <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/30 mb-6 block">The Verdict</span>
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-[0.9]">
-              The Highest Rated <br/>
-              <span className="text-white/30">In West Delhi.</span>
-            </h2>
+      {/* --- AUTHORITY FLEX: REVIEWS TICKER --- */}
+      <section className="w-full bg-[#0A192F] text-white py-28 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+          <div>
+            <span className="text-xs font-bold tracking-[0.3em] uppercase text-blue-400 mb-3 block">Patient Trust</span>
+            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight">The Highest Rated <br/><span className="text-slate-400">In West Delhi.</span></h2>
           </div>
-
           <div className="flex flex-col items-start md:items-end">
-            <span className="text-[100px] md:text-[120px] font-bold tracking-tighter leading-none text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-              626<span className="text-[#007BFF]">+</span>
+            <span className="text-6xl md:text-8xl font-extrabold text-white tracking-tighter">
+              626<span className="text-blue-500">+</span>
             </span>
-            <span className="text-sm font-bold tracking-[0.2em] uppercase text-white/60">Verified 5-Star Reviews</span>
+            <span className="text-xs font-bold tracking-widest uppercase text-slate-400">Verified 5-Star Reviews</span>
           </div>
         </div>
 
-        {/* INFINITE SCROLLING REVIEW TRACK */}
-        <div className="relative w-full flex overflow-hidden py-10" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+        {/* Infinite Scrolling Track */}
+        <div className="relative w-full flex overflow-hidden py-4" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
           <motion.div 
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
             className="flex gap-6 w-max px-6"
           >
             {scrollingReviews.map((review, i) => (
-              <div key={i} className="w-[320px] md:w-[450px] bg-white/5 border border-white/10 p-8 rounded-3xl shrink-0 flex flex-col justify-between hover:bg-white/10 transition-colors cursor-grab active:cursor-grabbing">
+              <div key={i} className="w-[320px] md:w-[420px] bg-white/5 border border-white/10 p-8 rounded-3xl shrink-0 flex flex-col justify-between">
                 <div>
-                  <div className="flex gap-1 mb-6">
+                  <div className="flex gap-1 mb-4">
                     {[1,2,3,4,5].map(star => <Star key={star} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
                   </div>
-                  <p className="text-white/80 text-base md:text-lg leading-relaxed mb-8 font-medium">"{review.text}"</p>
+                  <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6 font-medium">"{review.text}"</p>
                 </div>
-                <div className="flex items-center gap-4 pt-6 border-t border-white/10">
-                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center font-bold text-white">
+                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                  <div className="w-9 h-9 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
                     {review.name.charAt(0)}
                   </div>
-                  <div className="flex flex-col">
-                    <span className="font-bold tracking-wide text-sm">{review.name}</span>
-                    <span className="text-[10px] font-bold tracking-widest uppercase text-[#007BFF]">Google Reviewer</span>
+                  <div>
+                    <span className="font-bold text-sm block">{review.name}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400">Google Patient</span>
                   </div>
                 </div>
               </div>
@@ -251,40 +267,25 @@ export default function MSDentalTapecutEdition() {
         </div>
       </section>
 
-      {/* --- FOOTER --- */}
-      <footer className="w-full bg-white text-black py-20 px-6 md:px-12 rounded-t-[2rem] md:rounded-t-[4rem] relative z-30">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-12">
-          
-          <div className="w-full md:w-1/2">
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-none uppercase">
-              Initiate <br/> Consultation.
-            </h2>
-            <div className="flex items-center gap-4 text-sm font-bold tracking-widest uppercase text-black/50 mb-2">
-              <MapPin className="w-4 h-4 text-black" /> D2/191, Jeevan Park, New Delhi
-            </div>
-            <div className="flex items-center gap-4 text-sm font-bold tracking-widest uppercase text-black/50">
-              <Clock className="w-4 h-4 text-black" /> Mon-Sat: 10AM - 8:30PM
+      {/* --- CLEAN PROFESSIONAL FOOTER --- */}
+      <footer className="w-full bg-white text-slate-900 py-16 px-6 md:px-12 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+          <div>
+            <h3 className="text-2xl font-extrabold text-[#0A192F] mb-4">M.S. Dental World</h3>
+            <p className="text-slate-500 text-sm max-w-sm mb-6">D2/191, Jeevan Park, Pankha Rd, Janakpuri, New Delhi - 110059</p>
+            <div className="flex items-center gap-4 text-xs font-bold text-slate-700 uppercase tracking-wider">
+              <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-blue-600" /> +91 98116 68657</span>
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 flex flex-col items-start md:items-end">
-            <a href="tel:+919811668657" className="group flex items-center gap-4 bg-black text-white px-8 py-5 rounded-full font-bold tracking-widest uppercase hover:scale-95 transition-transform duration-300 mb-6 shadow-xl shadow-black/20">
-              <Phone className="w-5 h-5" /> +91 98116 68657
+          <div className="flex flex-col items-start md:items-end">
+            <a href="tel:+919811668657" className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-wider hover:bg-blue-700 shadow-lg shadow-blue-600/20 transition-all mb-4">
+              Call Clinic Now
             </a>
-            <a href="mailto:lakshyathakur359@gmail.com" className="text-xs font-bold tracking-[0.2em] uppercase text-black/40 hover:text-black border-b border-black/20 pb-1 transition-colors">
-              lakshyathakur359@gmail.com
-            </a>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+              Prototype Engineered by Tapecut Studios
+            </span>
           </div>
-
-        </div>
-
-        {/* PROTOTYPE BADGE */}
-        <div className="max-w-7xl mx-auto w-full mt-20 pt-6 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase text-black/40">
-          <span>© {new Date().getFullYear()} M.S. Dental World</span>
-          <span className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 bg-[#007BFF] rounded-full animate-ping" />
-            Prototype Engineered by Tapecut Studios
-          </span>
         </div>
       </footer>
 
