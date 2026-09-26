@@ -79,7 +79,6 @@ export default function MSDentalTapecutEdition() {
             <img 
               src="/clinic-hero.jpg" 
               alt="Clinic Hero" 
-              // FULL COLOR CINEMATIC GRADE (No Grayscale)
               className="w-full h-[120%] object-cover object-center opacity-60 brightness-90 saturate-[1.1]"
               onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=2070&auto=format&fit=crop" }}
             />
@@ -121,7 +120,6 @@ export default function MSDentalTapecutEdition() {
               transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
               className="absolute top-0 left-0 w-full bg-[#020202] z-10"
             />
-            {/* FULL COLOR DOCTOR PORTRAIT WITH SMOOTH ZOOM */}
             <img 
               src="/doctor.jpg" 
               alt="Dr. Madan Mohan" 
@@ -156,15 +154,18 @@ export default function MSDentalTapecutEdition() {
         </div>
       </section>
 
-      {/* --- THE TAPECUT BENTO GRID --- */}
-      <section className="w-full bg-[#F5F5F5] py-32 px-6 md:px-12">
+      {/* --- THE FIXED CINEMATIC BENTO GRID --- */}
+      <section className="w-full bg-[#080808] py-32 px-6 md:px-12 text-white">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-black">The Standard <br/> Of Care.</h2>
-            <p className="text-black/50 max-w-sm text-sm font-medium">A world-class environment designed around patient comfort, strict hygiene, and clinical excellence.</p>
+            <div>
+              <span className="text-xs font-bold tracking-[0.3em] uppercase text-white/40 mb-4 block">Infrastructure & Standards</span>
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">The Standard <br/> Of Care.</h2>
+            </div>
+            <p className="text-white/50 max-w-sm text-sm font-medium">A world-class environment designed around patient comfort, strict hygiene, and clinical excellence.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[650px]">
             {services.map((service, index) => (
               <motion.div 
                 key={index}
@@ -172,27 +173,27 @@ export default function MSDentalTapecutEdition() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 0.98 }}
-                className={`relative bg-white rounded-3xl p-8 flex flex-col justify-between overflow-hidden group cursor-pointer border border-black/5 ${service.span}`}
+                whileHover={{ y: -5, scale: 1.01 }}
+                className={`relative bg-[#111] rounded-3xl p-8 md:p-10 flex flex-col justify-between overflow-hidden group cursor-pointer border border-white/10 shadow-2xl ${service.span}`}
               >
                 {service.img && (
                   <img 
                     src={service.img} 
                     alt={service.title} 
-                    className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-55 group-hover:scale-105 transition-all duration-700" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-75 group-hover:scale-105 transition-all duration-700" 
                     onError={(e) => { e.currentTarget.style.display = 'none' }}
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center mb-6 text-white group-hover:bg-white group-hover:text-black transition-colors">
-                    <ArrowUpRight className="w-4 h-4" />
+                  <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <ArrowUpRight className="w-5 h-5" />
                   </div>
                 </div>
-                <div className="relative z-10 mt-auto pt-12 text-white">
-                  <h3 className={`font-bold tracking-tight mb-2 ${service.span.includes('col-span-2') ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>{service.title}</h3>
-                  <p className="text-white/80 text-sm font-medium">{service.desc}</p>
+                <div className="relative z-10 mt-auto pt-16 text-white">
+                  <h3 className={`font-bold tracking-tight mb-3 ${service.span.includes('col-span-2') ? 'text-3xl md:text-5xl' : 'text-2xl md:text-3xl'}`}>{service.title}</h3>
+                  <p className="text-white/70 text-sm md:text-base font-medium max-w-md">{service.desc}</p>
                 </div>
               </motion.div>
             ))}
